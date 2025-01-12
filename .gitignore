@@ -1,0 +1,28 @@
+# WordPress core files
+/wp-admin/
+/wp-includes/
+
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/backups/
+
+# WordPress configuration files
+wp-config.php
+.htaccess
+
+# Composer files
+/vendor/
+
+# Sensitive files
+.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Log files
+*.log

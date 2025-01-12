@@ -1,0 +1,53 @@
+/*
+Theme Name: Twenty Twenty-Three Child
+Theme URI: https://example.com/twenty-twenty-three-child
+Description: This is a child theme of Twenty Twenty-Three.
+Author: Your Name
+Author URI: https://example.com
+Template: twentytwentythree
+Version: 1.0.0
+*/
+
+@import url('../twentytwentythree/style.css');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+:root {
+    --bs-secondary-rgb: 229, 229, 229 !important;
+
+    --bs-border-radius: 0.375rem !important;
+
+    --bs-btn-bg: #4F46E5 !important;
+    --bs-primary: #4F46E5 !important;
+    --bs-primary-rgb: 13, 110, 253 !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #4F46E5 !important;
+    border-color: #4F46E5 !important;
+}
+
+#breadcrumbs .breadcrumb-item::before {
+    content: none;
+}
+
+.required-message {
+    display: none;
+    color: red;
+    margin-left: 5px;
+}
+
+.mb {
+    border: 2px solid red;
+}
