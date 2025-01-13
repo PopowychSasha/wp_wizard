@@ -19,7 +19,19 @@
             '1.11.3', 
             'all' 
         );
+
+        wp_enqueue_style( 'twentytwentythree-child-style', 
+            get_stylesheet_uri(),
+            array(), 
+            wp_get_theme()->get('Version'), 
+            'all' 
+        );
     }
+
+    function add_viewport_meta_tag() {
+        echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
+    }
+
 
 
 
@@ -76,9 +88,9 @@
         $output = '
             <div class="container">
                 <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 54px;">
-                    <div class="bg-secondary rounded col-md-10 mx-auto py-5">
+                    <div class="bg-secondary rounded col-sm-10 mx-auto py-5">
                         <form id="wizard-form" class="col-11 col-md-9 mx-auto" method="POST" action="' . esc_url(admin_url('admin-post.php?action=send_email')) . '">                        
-                            <div class="breadcrumbs d-flex justify-content-between align-items-center rounded mb-5 me-5 bg-white pt-2 pe-4 pb-2 ps-3">
+                            <div class="breadcrumbs d-flex justify-content-between align-items-center rounded mb-4 me-4 bg-white pt-2 pe-4 pb-2 ps-3">
                                 <span class="breadcrumb-item p-0">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M10.7069 2.293C10.5194 2.10553 10.2651 2.00021 9.99992 2.00021C9.73475 2.00021 9.48045 2.10553 9.29292 2.293L2.29292 9.293C2.11076 9.4816 2.00997 9.7342 2.01224 9.9964C2.01452 10.2586 2.11969 10.5094 2.3051 10.6948C2.49051 10.8802 2.74132 10.9854 3.00352 10.9877C3.26571 10.99 3.51832 10.8892 3.70692 10.707L3.99992 10.414V17C3.99992 17.2652 4.10528 17.5196 4.29281 17.7071C4.48035 17.8946 4.7347 18 4.99992 18H6.99992C7.26514 18 7.51949 17.8946 7.70703 17.7071C7.89456 17.5196 7.99992 17.2652 7.99992 17V15C7.99992 14.7348 8.10528 14.4804 8.29281 14.2929C8.48035 14.1054 8.7347 14 8.99992 14H10.9999C11.2651 14 11.5195 14.1054 11.707 14.2929C11.8946 14.4804 11.9999 14.7348 11.9999 15V17C11.9999 17.2652 12.1053 17.5196 12.2928 17.7071C12.4803 17.8946 12.7347 18 12.9999 18H14.9999C15.2651 18 15.5195 17.8946 15.707 17.7071C15.8946 17.5196 15.9999 17.2652 15.9999 17V10.414L16.2929 10.707C16.4815 10.8892 16.7341 10.99 16.9963 10.9877C17.2585 10.9854 17.5093 10.8802 17.6947 10.6948C17.8801 10.5094 17.9853 10.2586 17.9876 9.9964C17.9899 9.7342 17.8891 9.4816 17.7069 9.293L10.7069 2.293Z" fill="#9CA3AF"/>
@@ -145,7 +157,7 @@
                         </form>
                     </div>
 
-                    <div class="col-md-10 mx-auto">
+                    <div class="col-sm-10 mx-auto">
                         <div class="col-11 col-md-9 mx-auto">
                             <h2>' . esc_html($atts['title']) . '</h2>
                             <p>' . $content . '</p>
@@ -347,3 +359,4 @@
     add_action('admin_post_send_email', 'r_handle_wizard_submission');
     add_action('admin_post_nopriv_send_email', 'r_handle_wizard_submission');
     add_action( 'wp_enqueue_scripts', 'twentytwentythree_child_enqueue_styles' );
+    add_action('wp_head', 'add_viewport_meta_tag');
