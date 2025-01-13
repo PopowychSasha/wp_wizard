@@ -74,47 +74,51 @@ function r_test_wizard_shortcode($atts, $content = null) {
     $output = '
         <div class="container">
             <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 54px;">
-                <div class="bg-secondary rounded col-10 mx-auto py-5">
-                    <form id="wizard-form" class="col-12 mx-auto" style="max-width: 70%;" method="POST" action="' . esc_url(admin_url('admin-post.php?action=send_email')) . '">                        
-                        <div id="breadcrumbs" class="mb-5 bg-white">
-                            <span>
-                                <i class="bi bi-house-door-fill fs-6"></i>
+                <div class="bg-secondary rounded col-md-10 mx-auto py-5">
+                    <form id="wizard-form" class="col-11 col-md-9 mx-auto" method="POST" action="' . esc_url(admin_url('admin-post.php?action=send_email')) . '">                        
+                        <div class="breadcrumbs rounded mb-5 bg-white pt-2 pe-4 pb-2 ps-3">
+                            <span class="breadcrumb-item p-0">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.7069 2.293C10.5194 2.10553 10.2651 2.00021 9.99992 2.00021C9.73475 2.00021 9.48045 2.10553 9.29292 2.293L2.29292 9.293C2.11076 9.4816 2.00997 9.7342 2.01224 9.9964C2.01452 10.2586 2.11969 10.5094 2.3051 10.6948C2.49051 10.8802 2.74132 10.9854 3.00352 10.9877C3.26571 10.99 3.51832 10.8892 3.70692 10.707L3.99992 10.414V17C3.99992 17.2652 4.10528 17.5196 4.29281 17.7071C4.48035 17.8946 4.7347 18 4.99992 18H6.99992C7.26514 18 7.51949 17.8946 7.70703 17.7071C7.89456 17.5196 7.99992 17.2652 7.99992 17V15C7.99992 14.7348 8.10528 14.4804 8.29281 14.2929C8.48035 14.1054 8.7347 14 8.99992 14H10.9999C11.2651 14 11.5195 14.1054 11.707 14.2929C11.8946 14.4804 11.9999 14.7348 11.9999 15V17C11.9999 17.2652 12.1053 17.5196 12.2928 17.7071C12.4803 17.8946 12.7347 18 12.9999 18H14.9999C15.2651 18 15.5195 17.8946 15.707 17.7071C15.8946 17.5196 15.9999 17.2652 15.9999 17V10.414L16.2929 10.707C16.4815 10.8892 16.7341 10.99 16.9963 10.9877C17.2585 10.9854 17.5093 10.8802 17.6947 10.6948C17.8801 10.5094 17.9853 10.2586 17.9876 9.9964C17.9899 9.7342 17.8891 9.4816 17.7069 9.293L10.7069 2.293Z" fill="#9CA3AF"/>
+                                </svg>
+
                             </span>
-                            <span id="step-1-breadcrumb" class="breadcrumb-item active">Contact Info</span>
-                            <span id="step-2-breadcrumb" class="breadcrumb-item">Quantity</span>
-                            <span id="step-3-breadcrumb" class="breadcrumb-item">Price</span>
-                            <span id="step-4-breadcrumb" class="breadcrumb-item">Done</span>
+                            <span id="step-1-breadcrumb" class="breadcrumb-item p-0 fw-medium text-light active">Contact Info</span>
+                            <span id="step-2-breadcrumb" class="breadcrumb-item p-0 fw-medium text-light">Quantity</span>
+                            <span id="step-3-breadcrumb" class="breadcrumb-item p-0 fw-medium text-light">Price</span>
+                            <span id="step-4-breadcrumb" class="breadcrumb-item p-0 fw-medium text-light">Done</span>
                         </div>
+                        
 
                         <div id="form-step-1">
-                            <h2 class="display-5 fw-bold">Contact Info</h2>
+                            <h2 class="display-5 fw-bold text-dark">Contact Info</h2>
                             <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                <label for="name" class="col-3 text-end">Name <span class="required-message">required</span></label>
-                                <div class="col-8">
-                                    <input type="text" id="name" name="name" class="form-control" required> 
+                                <label for="name" class="col-md-4 col-lg-3 text-end text-info">Name <span class="required-message text-danger">required</span></label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="text" id="name" name="name" class="form-control border-success" required> 
                                 </div>
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                <label for="email" class="col-3 text-end">Email <span class="required-message">required</span></label>
-                                <div class="col-8">
-                                    <input type="email" id="email" name="email" class="form-control" required>
+                                <label for="email" class="col-md-4 col-lg-3 text-end text-info">Email <span class="required-message text-danger">required</span></label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="email" id="email" name="email" class="form-control border-success" required>
                                 </div>
                             </div>
 
                             <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                <label for="phone" class="col-3 text-end">Phone <span class="required-message">required</span></label>
-                                <div class="col-8">
-                                    <input type="text" id="phone" name="phone" class="form-control" required>
+                                <label for="phone" class="col-md-4 col-lg-3 text-end text-info">Phone <span class="required-message text-danger">required</span></label>
+                                <div class="col-md-8 col-lg-9">
+                                    <input type="text" id="phone" name="phone" class="form-control border-success" required>
                                 </div>
                             </div>
-                            <button type="button" id="next-btn-1" class="btn btn-primary px-3 py-2">Continue</button>
+                            <button type="button" id="next-btn-1" class="btn bg-primary text-white border-primary px-3 py-2">Continue</button>
                         </div>
 
                         <div id="form-step-2" style="display: none;">
                             <h2 class="display-5 fw-bold">Quantity</h2>
                             <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                <label for="quantity" class="col-3 text-end">Quantity <span class="required-message">required</span></label>
-                                <div class="col-8">
+                                <label for="quantity" class="col-md-4 col-lg-3 text-end">Quantity <span class="required-message">required</span></label>
+                                <div class="col-md-8 col-lg-9">
                                     <input type="number" id="quantity" name="quantity" class="form-control" required>
                                 </div>
                             </div>
@@ -141,8 +145,8 @@ function r_test_wizard_shortcode($atts, $content = null) {
                     </form>
                 </div>
 
-                <div class="col-10 mx-auto">
-                    <div class="col-12 mx-auto" style="max-width: 70%;">
+                <div class="col-md-10 mx-auto">
+                    <div class="col-11 col-md-9 mx-auto">
                         <h2>' . esc_html($atts['title']) . '</h2>
                         <p>' . $content . '</p>
                     </div>
@@ -249,43 +253,9 @@ function r_test_wizard_shortcode($atts, $content = null) {
         </script>
 
         <style>
-            #breadcrumbs {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 15px;
-                border-radius: 8px;
-                font-family: Arial, sans-serif;
-                margin-bottom: 20px;
-                font-size: 14px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            }
-
-            .breadcrumb-item {
-                position: relative;
-                color: #6c757d;
-                font-weight: 600;
-                text-transform: capitalize;
-                padding: 5px 10px;
-                cursor: default;
-            }
-
             .breadcrumb-item.active {
-                color: #fff;
-                color: #4F46E5;
-                border-radius: 4px;
-                padding: 5px 10px;
-            }
-
-            .breadcrumb-item:hover {
-                text-decoration: underline;
-                color: #4F46E5;
-            }
-
-            .breadcrumb-item.active:hover {
-                text-decoration: none;
-                cursor: default;
-            }
+                color: #4F46E5 !important;
+            } 
         </style>
     ';
 
