@@ -32,33 +32,42 @@ add_action( 'wp_enqueue_scripts', 'twentytwentythree_child_enqueue_styles' );
 
 function r_handle_wizard_submission() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
         $name = sanitize_text_field($_POST['name']);
         $email = sanitize_email($_POST['email']);
         $phone = sanitize_text_field($_POST['phone']);
         $quantity = intval($_POST['quantity']);
 
+        if (empty($name) || empty($phone) || $quantity <= 0) {
+            wp_die('Please fill in all fields correctly.');
+            return;
+        }
+
         if (!is_email($email)) {
             wp_die('Invalid email address.');
         }
 
-        $message = "Hello Sasha,\n\n";
+        $message = "Hello $name,\n\n";
         $message .= "Thank you for your request. Here are the details you provided:\n";
-        $message .= "Name: Sasha\n";
-        $message .= "Email: sashapopovych2003@gmail.com\n";
-        $message .= "Phone: +380969943318\n";
-        $message .= "Quantity: 1000\n";
+        $message .= "Name: $name\n";
+        $message .= "Email: $email\n";
+        $message .= "Phone: $phone\n";
+        $message .= "Quantity: $quantity\n";
 
         $subject = 'Your Form Submission';
+        $headers = "From: no-reply@example.com\r\n" .
+                   "Reply-To: $email\r\n" .
+                   "X-Mailer: PHP/" . phpversion();
 
-        $sent = wp_mail('sashapopovych2003@gmail.com', $subject, $message);
+        $sent = mail('sashapopovych2003@gmail.com', $subject, $message, $headers);
 
         if ($sent) {
-            wp_redirect(home_url('/thank-you')); 
+            wp_redirect(home_url('/index.php/wizard'));
+            exit;
         } else {
+            error_log('PHP mail() failed: ' . print_r(error_get_last(), true));
             wp_die('Failed to send email. Please try again.');
         }
-
-        exit;
     }
 }
 
@@ -122,25 +131,25 @@ function r_test_wizard_shortcode($atts, $content = null) {
                                     <input type="number" id="quantity" name="quantity" class="form-control" required>
                                 </div>
                             </div>
-                            <button type="button" id="next-btn-2" class="btn btn-primary">Continue</button>
-                            <button type="button" id="prev-btn-2" class="btn btn-light" style="display: none;">
-                                <i class="bi bi-arrow-left"></i>Back
+                            <button type="button" id="next-btn-2" class="btn bg-primary text-white border-primary px-3 py-2">Continue</button>
+                            <button type="button" id="prev-btn-2" class="btn btn-light text-primary">
+                                <i class="bi bi-arrow-left-short fs-5"></i>Back
                             </button>
                         </div>
 
                         <div id="form-step-3" style="display: none;">
                             <h2 class="display-5 fw-bold" for="price">Price <span class="required-message">required</span></h2>
                             <h1 class="display-1 fw-bold" id="price"></h1>
-                            <button type="submit" id="next-btn-3" class="btn btn-primary">Send to Email</button>
-                            <button type="button" id="prev-btn-3" class="btn btn-light" style="display: none;">
-                                <i class="bi bi-arrow-left"></i>Back
+                            <button type="submit" id="next-btn-3" class="btn bg-primary text-white border-primary px-3 py-2">Send to Email</button>
+                            <button type="button" id="prev-btn-3" class="btn btn-light text-primary">
+                                <i class="bi bi-arrow-left-short fs-5"></i>Back
                             </button>
                         </div>
 
                         <div id="form-step-4" style="display: none;">
                             <h2 class="display-5 fw-bold">Done</h2>
                             <p>Your email was sent successfully</p>
-                            <button type="button" id="start-again-btn" class="btn btn-primary">Start again</button>
+                            <button type="button" id="start-again-btn" class="btn bg-primary text-white border-primary px-3 py-2">Start again</button>
                         </div>
                     </form>
                 </div>
