@@ -3,7 +3,7 @@ function twentytwentythree_child_enqueue_styles() {
     wp_enqueue_style( 'twentytwentythree-style', get_template_directory_uri() . '/style.css' );
 
     wp_enqueue_style( 'twentytwentythree-child-style', 
-        get_stylesheet_directory_uri() . '/style.scss', 
+        get_stylesheet_directory_uri() . '/style.css', 
         array( 'twentytwentythree-style' ) 
     );
 
