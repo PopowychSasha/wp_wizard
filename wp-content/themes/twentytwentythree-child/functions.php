@@ -161,7 +161,8 @@ function r_test_wizard_shortcode($atts, $content = null) {
                     </div>
                 </div>
             </div>
-
+        </div>
+        
         <script>
             function validateForm(formId) {
                 let isValid = true;
