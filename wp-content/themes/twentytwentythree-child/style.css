@@ -102,3 +102,7 @@ Version: 1.0.0
     font-size: 12px;
     vertical-align: top;
 }
+
+.breadcrumbs .breadcrumb-item.active {
+    color: #4F46E5 !important;
+} 

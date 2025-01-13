@@ -260,12 +260,6 @@ function r_test_wizard_shortcode($atts, $content = null) {
                 document.getElementById("form-step-4").style.display = "none";
             });
         </script>
-
-        <style>
-            .breadcrumb-item.active {
-                color: #4F46E5 !important;
-            } 
-        </style>
     ';
 
     return $output;
