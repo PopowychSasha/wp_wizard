@@ -1,4 +1,8 @@
 <?php
+    function add_viewport_meta_tag() {
+        echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
+    }
+    
     function twentytwentythree_child_enqueue_styles() {
         wp_enqueue_style( 'bootstrap', 
             'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css', 
@@ -27,13 +31,6 @@
             'all' 
         );
     }
-
-    function add_viewport_meta_tag() {
-        echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
-    }
-
-
-
 
     function r_handle_wizard_submission() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -272,91 +269,6 @@
                 });
 
             </script>
-            
-            <style>
-                :root {
-                    --bs-primary: #4F46E5 !important;
-                    --bs-primary-rgb: 79, 70, 229 !important;
-
-                    --bs-secondary: #e5e5e5 !important;
-                    --bs-secondary-rgb: 229, 229, 229 !important;
-
-                    --bs-success: #D1D5DB !important;
-                    --bs-success-rgb: 209, 213, 219 !important;
-
-                    --bs-danger: #979CA3 !important;
-                    --bs-danger-rgb: 151, 156, 163 !important;
-
-                    --bs-info: #4B5563 !important;
-                    --bs-info-rgb: 75, 85, 99 !important;
-
-                    --bs-light: #6B7280 !important;
-                    --bs-light-rgb: 107, 114, 128 !important;
-
-                    --bs-dark: #111827 !important;
-                    --bs-dark-rgb: 17, 24, 39 !important;
-
-                    --bs-muted: #979CA3 !important;
-                    --bs-muted-rgb: 151, 156, 163 !important;
-
-                    --bs-white: #ffffff !important;
-                    --bs-white-rgb: 255, 255, 255 !important;
-                }
-
-                .breadcrumbs.pt-2 {
-                    padding-top: 12px !important;
-                }
-
-                .breadcrumbs.pb-2 {
-                    padding-bottom: 12px !important;
-                }
-
-                .breadcrumbs .breadcrumb-item {
-                    position: relative;
-                    line-height: 17px;
-                    font-size: 13px;
-                }
-
-                .breadcrumbs .breadcrumb-item:not(:first-child)::before {
-                    content: "";
-                    position: absolute;
-                    top: 50%;
-                    right: 100%;
-                    width: 40px;
-                    height: 40px;
-                    border-top: 2px solid var(--bs-secondary);
-                    border-right: 2px solid var(--bs-secondary);
-                    transform: rotate(45deg) translate(-50%);
-                    margin-top: -6px;
-                    margin-right: 8px;
-                }
-
-                @media (max-width: 769px) {
-                    .breadcrumbs .breadcrumb-item:not(:last-child)::before {
-                        content: none;
-                    }
-                }
-
-                .breadcrumbs .breadcrumb-item:last-child::before {
-                    content: "";
-                }
-
-                @media (max-width: 769px) {
-                    .breadcrumbs .breadcrumb-item:last-child::before{
-                        content: none;
-                    }
-                }
-
-                .required-message {
-                    display: none;
-                    font-size: 12px;
-                    vertical-align: top;
-                }
-
-                .breadcrumbs .breadcrumb-item.active {
-                    color: var(--bs-primary) !important;
-                } 
-            </style>
         ';
 
         return $output;
