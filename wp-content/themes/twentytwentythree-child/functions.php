@@ -167,6 +167,11 @@
 
                 }
 
+                const isValidEmail = (email) => {
+                    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    return emailPattern.test(email);
+                };
+
                 const validateForm = (formId) => {
                     let isValid = true;
                     const form = document.getElementById(formId);
@@ -181,6 +186,29 @@
                             isValid = false;
                         } else {
                             errorSpan.style.display = "none";
+                        }
+
+                        if (input.type === "number" && input.value > 1000 && input.value) {
+                            console.log(input.value);
+                            errorSpan.style.display = "inline";
+                            errorSpan.textContent = "Large value"; 
+                            isValid = false;
+                        }
+                        else if(input.type === "number" && !input.value){
+                            errorSpan.style.display = "inline";
+                            errorSpan.textContent = "required"; 
+                            isValid = false;
+                        }
+
+                        if (input.type === "email" && input.value && !isValidEmail(input.value)) {
+                            errorSpan.style.display = "inline";
+                            errorSpan.textContent = "Invalide email";
+                            isValid = false;
+                        }
+                        else if(input.type === "email" && !input.value){
+                            errorSpan.style.display = "inline";
+                            errorSpan.textContent = "required"; 
+                            isValid = false;
                         }
                     });
 
