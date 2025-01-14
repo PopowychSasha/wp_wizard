@@ -12,6 +12,7 @@ if (!function_exists('r_handle_wizard_submission')) {
             if (!is_email($email)) {
                 $redirect_url = home_url('/?step=done&status=failed');
                 wp_redirect($redirect_url);
+                exit; 
             }
             
             $subject = 'Form Submission';
@@ -38,11 +39,12 @@ if (!function_exists('r_handle_wizard_submission')) {
 
             if ($sent) {
                 $redirect_url = home_url('/?step=done&status=success');
-                wp_redirect($redirect_url);
             } else {
                 $redirect_url = home_url('/?step=done&status=failed');
-                wp_redirect($redirect_url);
             }
+
+            wp_redirect($redirect_url);
+            exit; 
         }
     }
 }

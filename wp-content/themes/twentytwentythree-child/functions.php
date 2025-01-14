@@ -47,7 +47,7 @@
             <div class="container">
                 <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 54px;">
                     <div class="bg-secondary rounded col-sm-10 mx-auto py-5">
-                        <form id="wizard-form" class="col-11 col-md-9 mx-auto" method="POST" action="' . esc_url(admin_url('admin-post.php?action=send_email')) . '">                        
+                        <form class="col-11 col-md-9 mx-auto" method="POST" action="' . esc_url(admin_url('admin-post.php?action=send_email')) . '">                        
                             <div class="breadcrumbs d-flex justify-content-between align-items-center rounded mb-4 me-4 bg-white pt-2 pe-4 pb-2 ps-3">
                                 <span class="breadcrumb-item p-0">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,56 +61,73 @@
                             </div>
                             
                             <div id="form-step-1">
-                                <h2 class="display-5 fw-bold text-dark">Contact Info</h2>
-                                <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                    <label for="name" class="col-md-4 col-lg-3 text-end text-info">Name <span class="required-message text-danger">required</span></label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input type="text" id="name" name="name" class="form-control border-success" required> 
+                                <div>
+                                    <h2 class="display-5 fw-bold text-dark mb-4">Contact Info</h2>
+                                    <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
+                                        <label for="name" class="col-md-4 col-lg-3 text-end text-info">Name <span class="required-message text-danger">required</span></label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input type="text" id="name" name="name" class="form-control border-success" required> 
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                    <label for="email" class="col-md-4 col-lg-3 text-end text-info">Email <span class="required-message text-danger">required</span></label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input type="email" id="email" name="email" class="form-control border-success" required>
+                                    <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
+                                        <label for="email" class="col-md-4 col-lg-3 text-end text-info">Email <span class="required-message text-danger">required</span></label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input type="email" id="email" name="email" class="form-control border-success" required>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                    <label for="phone" class="col-md-4 col-lg-3 text-end text-info">Phone <span class="required-message text-danger">required</span></label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input type="text" id="phone" name="phone" class="form-control border-success" required>
+                                    <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
+                                        <label for="phone" class="col-md-4 col-lg-3 text-end text-info">Phone <span class="required-message text-danger">required</span></label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input type="text" id="phone" name="phone" class="form-control border-success" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <button type="button" id="next-btn-1" class="btn bg-primary text-white border-primary px-3 py-2">Continue</button>
+                                <div>
+                                    <button type="button" id="next-btn-1" class="btn bg-primary text-white border-primary px-3 py-2">Continue</button>
+                                </div>
                             </div>
 
                             <div id="form-step-2" style="display: none;">
-                                <h2 class="display-5 fw-bold">Quantity</h2>
-                                <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                    <label for="quantity" class="col-md-4 col-lg-3 text-end">Quantity <span class="required-message">required</span></label>
-                                    <div class="col-md-8 col-lg-9">
-                                        <input type="number" id="quantity" name="quantity" class="form-control" required>
+                                <div>
+                                    <h2 class="display-5 fw-bold mb-4">Quantity</h2>
+                                    <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
+                                        <label for="quantity" class="col-md-4 col-lg-3 text-end">Quantity <span class="required-message">required</span></label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input type="number" id="quantity" name="quantity" class="form-control" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <button type="button" id="next-btn-2" class="btn bg-primary text-white border-primary px-3 py-2">Continue</button>
-                                <button type="button" id="prev-btn-2" class="btn btn-light text-primary">
-                                    <i class="bi bi-arrow-left-short fs-5"></i>Back
-                                </button>
+                                <div>
+                                    <button type="button" id="next-btn-2" class="btn bg-primary text-white border-primary px-3 py-2">Continue</button>
+                                    <button type="button" id="prev-btn-2" class="btn btn-light text-primary">
+                                        <i class="bi bi-arrow-left-short fs-5"></i>Back
+                                    </button>
+                                </div>
                             </div>
 
                             <div id="form-step-3" style="display: none;">
-                                <h2 class="display-5 fw-bold" for="price">Price <span class="required-message">required</span></h2>
-                                <h1 class="display-1 fw-bold" id="price"></h1>
-                                <button type="submit" id="next-btn-3" class="btn bg-primary text-white border-primary px-3 py-2">Send to Email</button>
-                                <button type="button" id="prev-btn-3" class="btn btn-light text-primary">
-                                    <i class="bi bi-arrow-left-short fs-5"></i>Back
-                                </button>
+                                <div>
+                                    <h2 class="display-5 fw-bold mb-0" for="price">Price <span class="required-message">required</span></h2>
+                                    <h1 class="display-1 fw-bold" id="price"></h1>
+                                </div>
+
+                                <div>
+                                    <button type="submit" id="next-btn-3" class="btn bg-primary text-white border-primary px-3 py-2">Send to Email</button>
+                                    <button type="button" id="prev-btn-3" class="btn btn-light text-primary">
+                                        <i class="bi bi-arrow-left-short fs-5"></i>Back
+                                    </button>
+                                </div>
                             </div>
 
                             <div id="form-step-4" style="display: none;">
-                                <h2 class="display-5 fw-bold">Done</h2>
-                                <p id="done-step-content"></p>
-                                <button type="button" id="start-again-btn" class="btn bg-primary text-white border-primary px-3 py-2">Start again</button>
+                                <div>
+                                    <h2 class="display-5 fw-bold mb-4">Done</h2>
+                                    <p id="done-step-content"></p>
+                                </div>
+                                <div>
+                                    <button type="button" id="start-again-btn" class="btn bg-primary text-white border-primary px-3 py-2">Start again</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -130,7 +147,7 @@
                 const status = urlParams.get("status");
                 
                 if (step === "done") {
-                    document.getElementById("form-step-4").style.display = "block";
+                    document.getElementById("form-step-4").style.display = "flex";
                     document.getElementById("step-3-breadcrumb").classList.remove("active");
                     document.getElementById("step-4-breadcrumb").classList.add("active");
 
@@ -141,9 +158,9 @@
                     document.getElementById("step-1-breadcrumb").classList.remove("active");
 
                     if (status === "success") {
-                        document.getElementById("done-step-content").innerHTML = "<div><i class=\"bi bi-check-square fs-5\" style=\"color: #12c922;\"></i>Your email was sent successfully</div>";
+                        document.getElementById("done-step-content").innerHTML = "<div><i class=\"bi bi-check-square fs-5\" style=\"color: #12c922;\"></i><span class=\"text-info\" >Your email was sent successfully</span></div>";
                     } else if (status === "failed") {
-                        document.getElementById("done-step-content").innerHTML = "<div><i class=\"bi bi-exclamation-triangle fs-5\" style=\"color: #FF0000;\"></i>We cannot send you email right now. Use an alternative way to contact us</div>";
+                        document.getElementById("done-step-content").innerHTML = "<div><i class=\"bi bi-exclamation-triangle fs-5\" style=\"color: #FF0000;\"></i><span class=\"text-info\">We cannot send you email right now. Use an alternative way to contact us</span></div>";
                     }
 
                 }
@@ -183,7 +200,7 @@
                 document.getElementById("next-btn-1").addEventListener("click", () => {
                     if (validateForm("form-step-1")) {
                         document.getElementById("form-step-1").style.display = "none";
-                        document.getElementById("form-step-2").style.display = "block";
+                        document.getElementById("form-step-2").style.display = "flex";
                         document.getElementById("step-1-breadcrumb").classList.remove("active");
                         document.getElementById("step-2-breadcrumb").classList.add("active");
                         document.getElementById("prev-btn-2").style.display = "inline-block";
@@ -192,7 +209,7 @@
 
                 document.getElementById("prev-btn-2").addEventListener("click", () => {
                     document.getElementById("form-step-2").style.display = "none";
-                    document.getElementById("form-step-1").style.display = "block";
+                    document.getElementById("form-step-1").style.display = "flex";
                     document.getElementById("step-1-breadcrumb").classList.add("active");
                     document.getElementById("step-2-breadcrumb").classList.remove("active");
                     document.getElementById("prev-btn-2").style.display = "none";
@@ -205,7 +222,7 @@
                         document.getElementById("price").textContent = price;
 
                         document.getElementById("form-step-2").style.display = "none";
-                        document.getElementById("form-step-3").style.display = "block";
+                        document.getElementById("form-step-3").style.display = "flex";
                         document.getElementById("step-2-breadcrumb").classList.remove("active");
                         document.getElementById("step-3-breadcrumb").classList.add("active");
                         document.getElementById("prev-btn-3").style.display = "inline-block";
@@ -214,7 +231,7 @@
 
                 document.getElementById("prev-btn-3").addEventListener("click", () => {
                     document.getElementById("form-step-3").style.display = "none";
-                    document.getElementById("form-step-2").style.display = "block";
+                    document.getElementById("form-step-2").style.display = "flex";
                     document.getElementById("step-2-breadcrumb").classList.add("active");
                     document.getElementById("step-3-breadcrumb").classList.remove("active");
                     document.getElementById("prev-btn-3").style.display = "none";
@@ -223,7 +240,7 @@
                 document.getElementById("next-btn-3").addEventListener("click", () => {
                     if (validateForm("form-step-3")) {
                         document.getElementById("form-step-3").style.display = "none";
-                        document.getElementById("form-step-4").style.display = "block";
+                        document.getElementById("form-step-4").style.display = "flex";
                         document.getElementById("step-3-breadcrumb").classList.remove("active");
                         document.getElementById("step-4-breadcrumb").classList.add("active");
                     }
@@ -240,7 +257,7 @@
                     document.getElementById("step-3-breadcrumb").classList.remove("active");
                     document.getElementById("step-4-breadcrumb").classList.remove("active");
 
-                    document.getElementById("form-step-1").style.display = "block";
+                    document.getElementById("form-step-1").style.display = "flex";
                     document.getElementById("form-step-2").style.display = "none";
                     document.getElementById("form-step-3").style.display = "none";
                     document.getElementById("form-step-4").style.display = "none";

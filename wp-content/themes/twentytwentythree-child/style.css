@@ -86,3 +86,16 @@
 .breadcrumbs .breadcrumb-item.active {
     color: var(--bs-primary) !important;
 } 
+
+#form-step-1, #form-step-2, #form-step-3, #form-step-4{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 310px;
+}
+
+@media (max-width: 576px) {
+    #form-step-1, #form-step-2, #form-step-3, #form-step-4 {
+        min-height: auto;
+    }
+}
