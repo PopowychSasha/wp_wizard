@@ -109,7 +109,7 @@
 
                             <div id="form-step-4" style="display: none;">
                                 <h2 class="display-5 fw-bold">Done</h2>
-                                <p>Your email was sent successfully</p>
+                                <p id="done-step-content"></p>
                                 <button type="button" id="start-again-btn" class="btn bg-primary text-white border-primary px-3 py-2">Start again</button>
                             </div>
                         </form>
@@ -125,6 +125,29 @@
             </div>
             
             <script>
+                const urlParams = new URLSearchParams(window.location.search);
+                const step = urlParams.get("step");
+                const status = urlParams.get("status");
+                
+                if (step === "done") {
+                    document.getElementById("form-step-4").style.display = "block";
+                    document.getElementById("step-3-breadcrumb").classList.remove("active");
+                    document.getElementById("step-4-breadcrumb").classList.add("active");
+
+                    document.getElementById("form-step-1").style.display = "none";
+                    document.getElementById("form-step-2").style.display = "none";
+                    document.getElementById("form-step-3").style.display = "none";
+
+                    document.getElementById("step-1-breadcrumb").classList.remove("active");
+
+                    if (status === "success") {
+                        document.getElementById("done-step-content").innerHTML = "<div><i class=\"bi bi-check-square fs-5\" style=\"color: #12c922;\"></i>Your email was sent successfully</div>";
+                    } else if (status === "failed") {
+                        document.getElementById("done-step-content").innerHTML = "<div><i class=\"bi bi-exclamation-triangle fs-5\" style=\"color: #FF0000;\"></i>We cannot send you email right now. Use an alternative way to contact us</div>";
+                    }
+
+                }
+
                 const validateForm = (formId) => {
                     let isValid = true;
                     const form = document.getElementById(formId);
@@ -207,6 +230,8 @@
                 });
 
                 document.getElementById("start-again-btn").addEventListener("click", () => {
+                    history.replaceState(null, null, window.location.pathname);                    
+                    
                     const inputs = document.querySelectorAll("input[type=text], input[type=email], input[type=number]");
                     inputs.forEach((input) => (input.value = ""));
 

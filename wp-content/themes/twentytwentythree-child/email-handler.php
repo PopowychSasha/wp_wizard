@@ -9,13 +9,9 @@ if (!function_exists('r_handle_wizard_submission')) {
             $phone = sanitize_text_field($_POST['phone']);
             $quantity = intval($_POST['quantity']);
 
-            if (empty($name) || empty($phone) || $quantity <= 0) {
-                wp_die('Please fill in all fields correctly.');
-                return;
-            }
-
             if (!is_email($email)) {
-                wp_die('Invalid email address.');
+                $redirect_url = home_url('/?step=done&status=failed');
+                wp_redirect($redirect_url);
             }
             
             $subject = 'Form Submission';
@@ -41,11 +37,11 @@ if (!function_exists('r_handle_wizard_submission')) {
             $sent = wp_mail($email, $subject, $message, $headers);
 
             if ($sent) {
-                wp_redirect(home_url('/')); 
-                exit;
+                $redirect_url = home_url('/?step=done&status=success');
+                wp_redirect($redirect_url);
             } else {
-                error_log('Email failed to send.');
-                wp_die('Failed to send email. Please try again.');
+                $redirect_url = home_url('/?step=done&status=failed');
+                wp_redirect($redirect_url);
             }
         }
     }
