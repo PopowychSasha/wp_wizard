@@ -64,20 +64,20 @@
                                 <div>
                                     <h2 class="display-5 fw-bold text-dark mb-4">Contact Info</h2>
                                     <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                        <label for="name" class="col-md-4 col-lg-3 text-end text-info" style="font-size:15px;">Name <span class="required-message text-danger">required</span></label>
+                                        <label for="name" class="col-md-4 col-lg-3 text-end text-info" style="font-size:15px;">Name <span class="required-message text-danger">Required</span></label>
                                         <div class="col-md-8 col-lg-9">
                                             <input type="text" id="name" name="name" class="form-control border-success" required> 
                                         </div>
                                     </div>
                                     <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                        <label for="email" class="col-md-4 col-lg-3 text-end text-info" style="font-size:15px;">Email <span class="required-message text-danger">required</span></label>
+                                        <label for="email" class="col-md-4 col-lg-3 text-end text-info" style="font-size:15px;">Email <span class="required-message text-danger">Required</span></label>
                                         <div class="col-md-8 col-lg-9">
                                             <input type="email" id="email" name="email" class="form-control border-success" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                        <label for="phone" class="col-md-4 col-lg-3 text-end text-info" style="font-size:15px;">Phone <span class="required-message text-danger">required</span></label>
+                                        <label for="phone" class="col-md-4 col-lg-3 text-end text-info" style="font-size:15px;">Phone <span class="required-message text-danger">Required</span></label>
                                         <div class="col-md-8 col-lg-9">
                                             <input type="text" id="phone" name="phone" class="form-control border-success" required>
                                         </div>
@@ -92,9 +92,9 @@
                                 <div>
                                     <h2 class="display-5 fw-bold mb-4">Quantity</h2>
                                     <div class="form-group d-flex align-items-center justify-content-between mb-3 row">
-                                        <label for="quantity" class="col-md-4 col-lg-3 text-end" style="font-size:15px;">Quantity <span class="required-message">required</span></label>
+                                        <label for="quantity" class="col-md-4 col-lg-3 text-end" style="font-size:15px;">Quantity <span class="required-message">Required</span></label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input type="number" max="1000" id="quantity" name="quantity" class="form-control" required>
+                                            <input type="number" max="1000" min="0" id="quantity" name="quantity" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -194,9 +194,15 @@
                             errorSpan.textContent = "Large value"; 
                             isValid = false;
                         }
+                        else if (input.type === "number" && input.value < 0 && input.value) {
+                            console.log(input.value);
+                            errorSpan.style.display = "inline";
+                            errorSpan.textContent = "Negative value"; 
+                            isValid = false;
+                        }
                         else if(input.type === "number" && !input.value){
                             errorSpan.style.display = "inline";
-                            errorSpan.textContent = "required"; 
+                            errorSpan.textContent = "Required"; 
                             isValid = false;
                         }
 
@@ -207,7 +213,7 @@
                         }
                         else if(input.type === "email" && !input.value){
                             errorSpan.style.display = "inline";
-                            errorSpan.textContent = "required"; 
+                            errorSpan.textContent = "Required"; 
                             isValid = false;
                         }
                     });
